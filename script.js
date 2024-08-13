@@ -14,9 +14,10 @@ function submeter () {
     console.log(validaCPF(cpf));
 }
 function validaCPF(cpf) {
-    if (cpf = "") {
+    if (cpf == "") {
         alert("Campo CPF não pode ser vazio");
-            return false;
+        return false;
     }
+    cpf = cpf.trim();
     return true;
 }
