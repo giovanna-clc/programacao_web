@@ -32,5 +32,12 @@ function validaCPF(cpf) {
         return false;
     }
 
+    // Como verificar que o CPF só é válido nas seguintes formas: xxx.xxx.xxx-yy ou xxxxxxxxxyy ? -> Pode verificar se a entrada tem 14 dígitos ou 11
+
+    if (cpf.length != 11 && cpf.length != 14) {
+        alert ("Formato inválido");
+        return false;
+    }
+
     return true;
 }
