@@ -38,6 +38,37 @@ function validaCPF(cpf) {
         alert ("Formato inválido");
         return false;
     }
+    // Alterar 9 primeiros dígitos, respeitando a seguinte regra:
+    let soma = 0;
+    
+        for (let i = 1; i <= 9; i++){
+            console.log (cpf.charAt(i-1));
+            soma = soma + (cpf.charAt(i-1) * (10 - (i-1)));
+        }
+        console.log(soma);
+        let resto = soma %11;
 
-    return true;
+        if (resto < 2) {
+            if (cpf.charAt(9) != 0) {
+                alert("CPF inválido!");
+                return false;
+            }
+            return true;
+        }
+
+        let digitoVerificador1 = 11 - resto;
+        if (digitoVerificador1 != cpf.charAt(9)) {
+            alert ("CPF inválido!");
+            return false;
+        }
+
+        // Multiplicar cada dígito do CPF até o 1º dígito verificador 
+        // por 11, 10, 9 ... 2
+        // recuperar o resto da divisão da soma de todas as
+        // multiplicações por 11. Se o resto for menor que 2, o 2º 
+        // digito verificador deve ser 0. Caso contrário deve ser igual ao resto
+        // o segundo dígito verificador é o cpf.charAt(10)
+        // o primeiro dígito verificador é p cpf.charAt(9)
+
+        return true;
 }
